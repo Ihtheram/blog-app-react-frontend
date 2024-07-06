@@ -1,0 +1,7 @@
+{
+    "accessibility.signals.notebookCellFailed": {
+        "sound": "off"
+    },
+    "liveshare.accessibility.soundsEnabled": false,
+    "liveshare.accessibility.soundVolume": 0
+}
