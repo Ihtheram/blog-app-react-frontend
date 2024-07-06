@@ -1,3 +1,6 @@
+# Blog App Frontend
+Front end for Blog App project powered by React and TypeScript
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
