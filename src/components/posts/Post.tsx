@@ -4,50 +4,37 @@ import { useNavigate } from 'react-router-dom'
 import { IPost } from '../../models/IPost'
 import './PostItem.css'
 import { IUser } from '../../models/IUser';
+import axios from 'axios';
 
 
 function Post(props: IPost) {
 
     const [post, setPost] = useState<IPost>(props);
-    const [user, setUser] = useState<IUser>({
-        id: 0,
-        name: '',
-        email: '',
-        institute: '',
-        address: '',
-        role: 0,
-        createdAt: new Date(),
-        updatedAt: new Date()
-    });
+    const [user, setUser] = useState<IUser|null>(null);
 
 
     useEffect(() => {
-
-        let asyncCall = async () => {
-            // Fetch may still need header fields
-            let res = await fetch('http://localhost:8080/posts' + props, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then((data) => data.json())
-            .then((data) => setPost(data))
-            .catch((error) => {
-                alert("There was an error loading vehicle information")
-                console.log(error)
-            })
-        }
-        setPost(props)    
-    }, [])
+        const fetchData = async () => {
+          try {
+            const response = await axios.get('http://localhost:8080/users/'+ user?.id, {});
+            setUser(response.data);
+    
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+    
+        fetchData();
+      }, []);
 
     return (
         <>
             <div >
-                <h2>{post.userId}</h2>
+                <h4>{user?.name}</h4>
                 <p> {post.category}</p>
                 <p>{post.description}</p>
-                <p>Posted on: {post.createdAt}</p>
-                <p>Last Updated: {post.updatedAt}</p>
+                <p>Posted on: {post.createdAt.toString()}</p>
+                <p>Last Updated: {post.updatedAt.toString()}</p>
             </div>
         </>
     )
