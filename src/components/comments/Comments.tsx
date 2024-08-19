@@ -8,7 +8,31 @@ function Comments() {
   const location = useLocation();
   const postId = location.state?.postId;
 
-  const [comments, setComments] = useState<IComment[]|null>(null)
+
+  const examples : IComment[] = [
+    {
+      id: 1,
+      postId: 1,
+      commenterId: 1,
+      description: "ajfehw wuie  h g k oa ef ae fjoie afjel",
+      parentCommentId: 1,
+      createdAt: new Date("2024-08-18T09:31:43Z"),
+      updatedAt: new Date("2024-08-18T09:31:43Z")
+    },
+    {
+      id: 2,
+      postId: 1,
+      commenterId: 2,
+      description: "eio s w fewr oawefja  oeafl oa  ela",
+      parentCommentId: 1,
+      createdAt: new Date("2024-08-18T09:31:43Z"),
+      updatedAt: new Date("2024-08-18T09:31:43Z")
+    },
+    // Add more posts as needed...
+  ];
+
+
+  const [comments, setComments] = useState<IComment[]|null>(examples)
 
   useEffect(() => {
     const fetchData = async () => {

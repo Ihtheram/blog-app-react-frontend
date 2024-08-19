@@ -7,7 +7,7 @@ import Post from './Post';
 
 function Posts() {
 
-  const posts1 : IPost[] = [
+  const examples : IPost[] = [
     {
       id: 1,
       userId: 101,
@@ -32,7 +32,7 @@ function Posts() {
 
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState<IPost[]|null>(posts1)
+  const [posts, setPosts] = useState<IPost[]|null>(examples)
 
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function Posts() {
       })
       .catch((error) => {
         console.log(error);
-        navigate('/login');
+        // navigate('/login');
       });
   }, []);
 

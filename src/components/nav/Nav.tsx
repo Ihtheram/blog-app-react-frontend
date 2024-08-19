@@ -24,8 +24,8 @@ function Nav() {
             <li><Link to="/people">People</Link></li>
             
             
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
+            {/* <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li> */}
         </ul>
     </nav>
     )
