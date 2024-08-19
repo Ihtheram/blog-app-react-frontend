@@ -32,7 +32,7 @@ function Posts() {
 
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState<IPost[]|null>(null)
+  const [posts, setPosts] = useState<IPost[]|null>(posts1)
 
 
   useEffect(() => {

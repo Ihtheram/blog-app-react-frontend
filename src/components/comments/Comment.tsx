@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
 
-import { IPost } from '../../models/IPost'
-import './PostItem.css'
 import { IUser } from '../../models/IUser';
 import axios from 'axios';
 import { IComment } from '../../models/IComment';
