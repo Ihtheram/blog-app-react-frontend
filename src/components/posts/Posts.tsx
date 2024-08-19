@@ -32,7 +32,7 @@ function Posts() {
 
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState<IPost[]>(posts1)
+  const [posts, setPosts] = useState<IPost[]|null>(null)
 
 
   useEffect(() => {
@@ -56,7 +56,8 @@ function Posts() {
     <div className='posts-container'>
       {/* <button onClick={navigateToNewPostForm} className='new-post-button'>Create a New Post!</button> */}
       <div className='posts-flexbox'>
-        {posts.map((post) => {
+        {posts == null? "No posts yet"
+        : posts.map((post) => {
           return <Post {...post} key={"post-icon-"+post.id}/>
         })}
       </div>

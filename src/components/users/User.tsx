@@ -43,7 +43,6 @@ function User(props: IUser) {
                 <p>Location: {user.address}</p>
                 <p>User Type: {user.role}</p>
                 <p>Member since {user.createdAt}</p>
-                
             </div>
         </>
     )

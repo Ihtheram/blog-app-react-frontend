@@ -5,9 +5,10 @@ import { IPost } from '../../models/IPost'
 import './PostItem.css'
 import { IUser } from '../../models/IUser';
 import axios from 'axios';
+import { IComment } from '../../models/IComment';
 
 
-function Post(props: IPost) {
+function Comment(props: IComment) {
 
     const [user, setUser] = useState<IUser|null>(null);
 
@@ -31,15 +32,13 @@ function Post(props: IPost) {
     return (
         <>
             <div >
-                <h4>{user?.name}</h4>
-                <p> {props.category}</p>
+                <h4>{props.commenterId}</h4>
                 <p>{props.description}</p>
                 <p>Posted on: {props.createdAt.toString()}</p>
                 <p>Last Updated: {props.updatedAt.toString()}</p>
-                <Link to={{ pathname: `/post/${props.id}` }}>Comments</Link>
             </div>
         </>
     )
 }
 
-export default Post
+export default Comment

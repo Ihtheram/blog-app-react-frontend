@@ -38,8 +38,6 @@ function App() {
       </header>
 
       <section className="App-section">
-        There are no posts yet
-
 
 
 
