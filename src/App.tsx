@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Nav from './components/nav/Nav';
 import Posts from './components/posts/Posts';
 import Users from './components/users/Users';
+import Comments from './components/comments/Comments';
 
 
 function App() {
@@ -15,20 +16,22 @@ function App() {
           <Nav></Nav>
           <Routes>
 
-            <Route path='/' element={<Navigate to={'/posts'} />}></Route>
+            <Route path='/' element={<Navigate to={'/posts'} />} />
 
             {/* <Route path='/login' element={<Login />}></Route> */}
             {/* <Route path='/register' element={<Register />}></Route> */}
 
-            <Route path='/posts' element={<Posts />}></Route>
+            <Route path='/posts' element={<Posts />} />
             {/* <Route path='/new-post' element={<NewPostForm />}></Route>} */}
             {/* <Route path='/edit/:id' element={<EditPostForm />}></Route> */}
+            <Route path="/post/:postId" element={<Comments />} />
 
-            <Route path='/people' element={<Users />}></Route>
+            <Route path='/people' element={<Users />} />
 
             {/* <Route path='/new-comment' element={<NewCommentForm />}></Route> */}
 
-            <Route path='*' element={<h1>404 Not Found</h1>}></Route>
+
+            <Route path='*' element={<h1>404 Not Found</h1>} />
           </Routes>
         </BrowserRouter>
 

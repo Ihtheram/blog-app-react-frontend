@@ -7,9 +7,32 @@ import Post from './Post';
 
 function Posts() {
 
+  const posts1 : IPost[] = [
+    {
+      id: 1,
+      userId: 101,
+      category: 0,
+      description: "Exploring the human mind and behavior.",
+      approval: true,
+      createdAt: new Date("2024-08-18T09:31:43Z"),
+      updatedAt: new Date("2024-08-18T09:31:43Z"),
+    },
+    {
+      id: 2,
+      userId: 102,
+      category: 2,
+      description: "Latest scientific discoveries and research.",
+      approval: true,
+      createdAt: new Date("2024-08-18T09:31:43Z"),
+      updatedAt: new Date("2024-08-18T09:31:43Z"),
+    },
+    // Add more posts as needed...
+  ];
+  
+
   const navigate = useNavigate();
 
-  const [posts, setPosts] = useState<IPost[]>([])
+  const [posts, setPosts] = useState<IPost[]>(posts1)
 
 
   useEffect(() => {
