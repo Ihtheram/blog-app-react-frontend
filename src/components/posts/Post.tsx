@@ -29,13 +29,13 @@ function Post(props: IPost) {
 
     return (
         <>
-            <div >
-                <h4>{user?.name}</h4>
-                <p> {props.category}</p>
-                <p>{props.description}</p>
-                <p>Posted on: {props.createdAt.toString()}</p>
-                <p>Last Updated: {props.updatedAt.toString()}</p>
-                <Link to={{ pathname: `/post/${props.id}` }}>Comments</Link>
+            <div className='container pb-5'>
+                <h4 className='py-1 fw-bold'> {user? user.name: "John Doe"}</h4>
+                <h5 className='py-1'> Topic: {props.category? props.category : "Other"} </h5>
+                <p className="fs-5 py-1"> {props.description}</p>
+                <p className="fs-6">Posted on: {props.createdAt.toString()}</p>
+                {props.updatedAt.toString() === props.createdAt.toString() ? '' : '<p className="fs-6"> Last Edited:'+ props.updatedAt.toString()+'</p>'}
+                <Link className="fs-5 my-3 border border-secondary border-2 rounded-pill  icon-link text-decoration-none text-secondary" to={{ pathname: `/post/${props.id}` }}>Comments</Link>
             </div>
         </>
     )

@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <Nav></Nav>
           <Routes>
-
+            
             <Route path='/' element={<Navigate to={'/posts'} />} />
 
             {/* <Route path='/login' element={<Login />}></Route> */}
@@ -32,7 +32,7 @@ function App() {
             {/* <Route path='/new-comment' element={<NewCommentForm />}></Route> */}
 
 
-            <Route path='*' element={<h1>404 Not Found</h1>} />
+            <Route path='*' element={<div className="container"> <h1>404 Not Found</h1> </div>} />
           </Routes>
         </BrowserRouter>
 

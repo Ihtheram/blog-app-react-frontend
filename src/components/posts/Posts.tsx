@@ -7,12 +7,21 @@ import Post from './Post';
 
 function Posts() {
 
+  enum Category {
+    Psychology = "Psychology",
+    Social = "Social",
+    Science = "Science",
+    Fitness = "Fitness",
+    Religion = "Religion",
+    Others = "Others"
+  }
+
   const examples : IPost[] = [
     {
       id: 1,
       userId: 101,
-      category: 0,
-      description: "Exploring the human mind and behavior.",
+      category: Category.Psychology,
+      description: "Psychology is the scientific study of behavior and mental processes, a field that encompasses a diverse range of topics such as cognition, emotions, personality, interpersonal relationships, and mental health. This corpus provides an overview of the fundamental concepts, theories, and applications of psychology, highlighting its significance in understanding the human experience.",
       approval: true,
       createdAt: new Date("2024-08-18T09:31:43Z"),
       updatedAt: new Date("2024-08-18T09:31:43Z"),
@@ -20,8 +29,8 @@ function Posts() {
     {
       id: 2,
       userId: 102,
-      category: 2,
-      description: "Latest scientific discoveries and research.",
+      category: Category.Science,
+      description: "Science, the systematic pursuit of knowledge, has been humanity's guiding star through the dark cosmic sea of the unknown. From the vibrant hues of the solar spectrum to the minuscule interactions of subatomic particles, the manifold realms of science bind our understanding of existence. This corpus delves into the fundamental branches of science, the methodology of scientific inquiry, and the transcendent influence of scientific discoveries on society.",
       approval: true,
       createdAt: new Date("2024-08-18T09:31:43Z"),
       updatedAt: new Date("2024-08-18T09:31:43Z"),
@@ -53,9 +62,9 @@ function Posts() {
   
 
   return (
-    <div className='posts-container'>
+    <div className='container-fluid'>
       {/* <button onClick={navigateToNewPostForm} className='new-post-button'>Create a New Post!</button> */}
-      <div className='posts-flexbox'>
+      <div className='container-fluid'>
         {posts == null? "No posts yet"
         : posts.map((post) => {
           return <Post {...post} key={"post-icon-"+post.id}/>

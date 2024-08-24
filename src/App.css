@@ -18,10 +18,14 @@ a {
 
 .App-logo {
   background-image: url(./logo.png);
-  background-size: cover;
-  
-  min-width: 5vw;
-  padding: 1%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 50px;
+  min-width: 50px;
+
+  min-width: 10vw;
+  color: transparent;
+  box-shadow: none;
 }
 
 .App-section {
@@ -41,6 +45,6 @@ a {
 }
 
 
-li {
-  
+.dec-none {
+  text-decoration: none;
 }

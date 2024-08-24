@@ -1,10 +1,10 @@
 enum Category {
-  "Psychology",
-  "Social",
-  "Science",
-  "Fitness",
-  "Religion",
-  "Others"
+  Psychology = "Psychology",
+  Social = "Social",
+  Science = "Science",
+  Fitness = "Fitness",
+  Religion = "Religion",
+  Others = "Others"
 }
 
 export interface IPost {
