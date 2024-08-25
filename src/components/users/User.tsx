@@ -1,48 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { IUser } from '../../models/IUser'
-
+import thumbnail from "../../assets/images/avatar-159236_640.png";
+import { Link } from 'react-router-dom';
 
 function User(props: IUser) {
 
-    const [user, setUser] = useState<any>(props);
-
-    useEffect(() => {
-
-
-        let asyncCall = async () => {
-            // Fetch may still need header fields
-            let res = await fetch('http://localhost:8080/users/' + props, {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then((data) => data.json())
-            .then((data) => setUser(data))
-            .catch((error) => {
-                alert("There was an error loading vehicle information")
-                console.log(error)
-            })
-        }
-
-        if (typeof props === 'number') {
-            asyncCall()
-        } else {
-            setUser(props)
-        }
-    
-    }, [])
-
     return (
         <>
-            <div >
-                <h2>{user.name}</h2>
-                <p>{user.email}</p>
-                <p>Institute: {user.institute}</p>
-                <p>Location: {user.address}</p>
-                <p>User Type: {user.role}</p>
-                <p>Member since {user.createdAt}</p>
+            <div className='container py-3 my-2 bg-light-subtle border-2 rounded-pill d-inline-flex align-items-center'>
+
+                <img src={thumbnail} className="float-start img-fluid rounded-circle" style={{ height: "100px" }} alt=""></img>
+                <div className='container'>
+                    <h4 className='fw-bold'>{props.name}</h4>
+                    <h5 className="fs-6 fw-bold">{props.role}</h5>
+                    <h6 className="fs-6">{props.institute}</h6>
+                </div>
+                <Link className="float-end fs-4 py-4 border border-secondary border-2 rounded-4 rounded-end-circle icon-link text-decoration-none text-secondary" to={{ pathname: `/befriend/${props.id}` }}>Befriend</Link>    
             </div>
         </>
     )

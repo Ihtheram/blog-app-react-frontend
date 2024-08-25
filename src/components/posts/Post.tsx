@@ -29,7 +29,7 @@ function Post(props: IPost) {
 
     return (
         <>
-            <div className='container pb-5'>
+            <div className='container p-4 my-2 bg-light-subtle border-2 rounded-5'>
                 <h4 className='py-1 fw-bold'> {user? user.name: "John Doe"}</h4>
                 <h5 className='py-1'> Topic: {props.category? props.category : "Other"} </h5>
                 <p className="fs-5 py-1"> {props.description}</p>

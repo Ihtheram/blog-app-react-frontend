@@ -1,6 +1,6 @@
 enum Role {
-    "Writer",
-    "Admin",
+    writer = "Writer",
+    admin = "Admin",
 }
 
 export interface IUser {
