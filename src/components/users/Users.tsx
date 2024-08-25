@@ -73,7 +73,7 @@ function Users() {
     <div className='container-fluid'>
       {/* <button onClick={navigateToRegistrationForm} className='new-user-button'>Sign up</button> */}
       <div className='container-fluid'>
-        {users == null ? "Unfortunately, cannot show users!"
+        {users == null ?  <h4 className='text-center fw-normal text-body-secondary m-4'>Unfortunately, cannot show users!</h4>
           : users.map((user) => {
             return <User {...user} key={"user-icon-" + user.id} />
           })}

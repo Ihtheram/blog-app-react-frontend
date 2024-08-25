@@ -1,6 +1,10 @@
 .App {
-  background-color: #282c34;
+  background-color: #1c1c1c;
   min-height: 100vh;
+}
+
+.bg-comment {
+  background-color: #292b2f;
 }
 
 .App-header {

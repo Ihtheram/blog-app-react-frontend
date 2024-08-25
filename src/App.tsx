@@ -25,7 +25,6 @@ function App() {
             <Route path='/posts' element={<Posts />} />
             {/* <Route path='/new-post' element={<NewPostForm />}></Route>} */}
             {/* <Route path='/edit/:id' element={<EditPostForm />}></Route> */}
-            <Route path="/post/:postId" element={<Comments />} />
 
             <Route path='/people' element={<Users />} />
 

@@ -33,7 +33,7 @@ function Posts() {
       description: "Science, the systematic pursuit of knowledge, has been humanity's guiding star through the dark cosmic sea of the unknown. From the vibrant hues of the solar spectrum to the minuscule interactions of subatomic particles, the manifold realms of science bind our understanding of existence. This corpus delves into the fundamental branches of science, the methodology of scientific inquiry, and the transcendent influence of scientific discoveries on society.",
       approval: true,
       createdAt: new Date("2024-08-18T09:31:43Z"),
-      updatedAt: new Date("2024-08-18T09:31:43Z"),
+      updatedAt: new Date("2024-09-18T09:31:43Z"),
     },
     // Add more posts as needed...
   ];
@@ -65,7 +65,7 @@ function Posts() {
     <div className='container-fluid'>
       {/* <button onClick={navigateToNewPostForm} className='new-post-button'>Create a New Post!</button> */}
       <div className='container-fluid'>
-        {posts == null? "No posts yet"
+        {posts == null? <h4 className='text-center fw-normal text-body-secondary m-4'>No posts yet</h4>
         : posts.map((post) => {
           return <Post {...post} key={"post-icon-"+post.id}/>
         })}
