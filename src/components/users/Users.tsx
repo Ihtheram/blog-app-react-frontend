@@ -70,9 +70,10 @@ function Users() {
 
 
   return (
-    <div className='container-fluid'>
+    <div className='container col-sm-8 min-vh-100'>
       {/* <button onClick={navigateToRegistrationForm} className='new-user-button'>Sign up</button> */}
       <div className='container-fluid'>
+      {/* <h1 className='text-center text-secondary-emphasis fw-normal'>PEOPLE</h1> */}
         {users == null ?  <h4 className='text-center fw-normal text-body-secondary m-4'>Unfortunately, cannot show users!</h4>
           : users.map((user) => {
             return <User {...user} key={"user-icon-" + user.id} />

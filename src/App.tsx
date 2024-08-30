@@ -6,7 +6,12 @@ import Nav from './components/nav/Nav';
 import Posts from './components/posts/Posts';
 import Users from './components/users/Users';
 import Comments from './components/comments/Comments';
-
+import { Login } from './components/authentication/Login';
+import { Register } from './components/authentication/Register';
+import { NotFound } from './components/errors/NotFound';
+import { SubmitEmail } from './components/authentication/SubmitEmail';
+import { SubmitCode } from './components/authentication/SubmitCode';
+import { SubmitPassword } from './components/authentication/SubmitPassword';
 
 function App() {
   return (
@@ -19,8 +24,12 @@ function App() {
             
             <Route path='/' element={<Navigate to={'/posts'} />} />
 
-            {/* <Route path='/login' element={<Login />}></Route> */}
-            {/* <Route path='/register' element={<Register />}></Route> */}
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/submit-email' element={<SubmitEmail />} />
+            <Route path='/submit-code' element={<SubmitCode />} />
+            <Route path='/submit-password' element={<SubmitPassword />} />
+            
 
             <Route path='/posts' element={<Posts />} />
             {/* <Route path='/new-post' element={<NewPostForm />}></Route>} */}
@@ -31,7 +40,7 @@ function App() {
             {/* <Route path='/new-comment' element={<NewCommentForm />}></Route> */}
 
 
-            <Route path='*' element={<div className="container"> <h1>404 Not Found</h1> </div>} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
         </BrowserRouter>
 

@@ -14,7 +14,7 @@ function User(props: IUser) {
                     <h5 className="fs-6 fw-bold">{props.role}</h5>
                     <h6 className="fs-6">{props.institute}</h6>
                 </div>
-                <Link className="float-end fs-4 py-4 border border-secondary border-2 rounded-4 rounded-end-circle icon-link text-decoration-none text-secondary" to={{ pathname: `/befriend/${props.id}` }}>Befriend</Link>    
+                <Link className="float-end fs-6 py-4 px-2 border border-secondary border-2 rounded-3 rounded-end-circle icon-link text-decoration-none text-secondary" to={{ pathname: `/befriend/${props.id}` }}>Befriend</Link>    
             </div>
         </>
     )

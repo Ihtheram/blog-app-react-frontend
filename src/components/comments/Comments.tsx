@@ -11,7 +11,7 @@ function Comments(props:{postId:number}) {
   const postId = props.postId;
 
 
-  const examples: IComment[] = [
+  const example: IComment[] = [
     {
       id: 1,
       postId: 1,
@@ -34,7 +34,7 @@ function Comments(props:{postId:number}) {
   ];
 
 
-  const [comments, setComments] = useState<IComment[] | null>(examples)
+  const [comments, setComments] = useState<IComment[] | null>(example)
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
 
   useEffect(() => {
@@ -64,10 +64,10 @@ function Comments(props:{postId:number}) {
 
         <div className="content container p-1 m-1  border-2 rounded-5">
           <div className='card container-fluid p-2 border-0'>
-          <h4> Comments </h4>
+          {comments && <h4 className='px-3'> Comments </h4>}
             {/* <button onClick={navigateToNewCommentForm} className='new-comment-button'>Create a New Comment!</button> */}
             <div className='container-fluid'>
-              {comments == null ? "No comments yet"
+              {comments == null ? <h4 className='text-center fw-normal text-body-secondary fs-6'>This post has no comments yet</h4>
                 : comments.map((comment) => {
                   return <Comment {...comment} key={"comment-icon-" + comment.id} />
                 })}

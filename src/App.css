@@ -3,21 +3,26 @@
   min-height: 100vh;
 }
 
+.bg-navbar {
+  background-color: #1c1c1c54;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
 .bg-comment {
   background-color: #292b2f;
 }
 
 .App-header {
-  min-height: 10vh;
-  align-items: left;
-  justify-content: left;
+  min-height: 80vh;
+  align-items: center;
+  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  padding: 1vh;
 }
 
-a {
-  padding: 10px;
+.dec-none {
+  text-decoration: none;
 }
 
 .App-logo {
@@ -32,23 +37,40 @@ a {
   box-shadow: none;
 }
 
-.App-section {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-footer {
   min-height: 10vh;
   color: rgb(187, 187, 187);
   text-align: center;
+  padding: 50px;
 }
 
 
-.dec-none {
-  text-decoration: none;
+
+
+
+input:placeholder-shown {
+  background-color: rgba(54, 54, 54, 0);
+  border: 2px solid rgba(170, 170, 170, 0.301);
+}
+
+select,
+input,
+label {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+
+.button-submit:hover {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.548), 0 0 20px rgba(255, 255, 255, 0.363);
+  text-shadow: 0 0 1px white, 0 0 10px rgba(186, 210, 255, 0.908), 0 0 20px rgba(150, 201, 255, 0.682);
+  color: white;
+  background-color: rgba(43, 82, 150, 0.664);
+}
+
+.button-risky:hover {
+  box-shadow: 0 0 5px white, 0 0 10px rgba(255, 255, 255, 0.788), 0 0 20px rgba(255, 255, 255, 0.586);
+  text-shadow: 0 0 1px white, 0 0 10px rgba(255, 255, 255, 0.524);
+  color: white;
+  background-color: rgb(177, 0, 0);
 }

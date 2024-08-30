@@ -18,20 +18,25 @@ function Nav() {
     // </nav>
 
 
-    <nav className="navbar navbar-expand-sm pb-5">
-
-        <Link className="App-logo" to="/"></Link>
+    <nav className="container-fluid navbar navbar-expand-sm p-1 sticky-top bg-navbar d-flex justify-content-between">
+    
+    <Link className="App-logo" to="/"></Link>
         
-        <div className="container-fluid px-5">
+        <div>
         <ul className="navbar-nav">
             <li className="nav-item px-1"><Link className="nav-link" to="/posts">Posts</Link></li>
             <li className="nav-item px-1"><Link className="nav-link" to="/people">People</Link></li>
-            
-            
-            <li className="nav-item px-1"><Link className="nav-link" to="/login">Login</Link></li>
-            <li className="nav-item px-1"><Link className="nav-link" to="/register">Register</Link></li>
         </ul>
         </div>
+        
+        <div>
+        <ul className="navbar-nav">
+            <li className="nav-item px-1"><Link className="nav-link" to="/login">Login</Link></li>
+            <li className="nav-item px-1"><Link className="nav-link" to="/register">Register</Link></li>
+            </ul>
+            </div>
+        
+        
     </nav>
     )
 }
