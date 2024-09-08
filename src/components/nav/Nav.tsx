@@ -9,35 +9,25 @@ function Nav() {
 
     return (
 
-    // <nav className='App-nav'>
-    //     <a href="">
-    //   <img className='App-logo' alt="" />
-    // </a>
-    // <a>Posts</a>
-    // <a>People</a>
-    // </nav>
+        <nav>
 
+            <div>
+                <ul className="navbar-nav">
+                    <li className="nav-item px-1"><Link className="nav-link" to="/posts">Posts</Link></li>
+                    <li className="nav-item px-1"><Link className="nav-link" to="/people">People</Link></li>
 
-    <nav className="container-fluid navbar navbar-expand-sm p-1 sticky-top bg-navbar d-flex justify-content-between">
-    
-    <Link className="App-logo" to="/"></Link>
-        
-        <div>
-        <ul className="navbar-nav">
-            <li className="nav-item px-1"><Link className="nav-link" to="/posts">Posts</Link></li>
-            <li className="nav-item px-1"><Link className="nav-link" to="/people">People</Link></li>
-        </ul>
-        </div>
-        
-        <div>
-        <ul className="navbar-nav">
-            <li className="nav-item px-1"><Link className="nav-link" to="/login">Login</Link></li>
-            <li className="nav-item px-1"><Link className="nav-link" to="/register">Register</Link></li>
-            </ul>
+                    {localStorage.getItem('user') == null ?
+                        <>
+                            <li className="nav-item px-1"><Link className="nav-link" to="/login">Login</Link></li>
+                            <li className="nav-item px-1"><Link className="nav-link" to="/register">Register</Link></li>
+                        </>
+                        : <li className="nav-item px-1"><Link className="nav-link" to="/logout">Logout</Link></li>
+                    }
+                </ul>
             </div>
-        
-        
-    </nav>
+
+
+        </nav>
     )
 }
 

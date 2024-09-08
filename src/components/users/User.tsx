@@ -6,16 +6,24 @@ function User(props: IUser) {
 
     return (
         <>
-            <div className='container py-3 my-2 bg-light-subtle border-2 rounded-pill d-inline-flex align-items-center'>
-
-                <img src={thumbnail} className="float-start img-fluid rounded-circle" style={{ height: "100px" }} alt=""></img>
-                <div className='container'>
-                    <h4 className='fw-bold'>{props.name}</h4>
-                    <h5 className="fs-6 fw-bold">{props.role}</h5>
-                    <h6 className="fs-6">{props.institute}</h6>
+            <div className="card mb-3 mx-3 px-3 border-2 rounded-pill" style={{ width: '500px' }}>
+                <div className="row g-0 align-items-center" style={{ width: '500px' }}>
+                    <div className="col-md-4"  style={{ width: '150px' }}>
+                        <img src={thumbnail} className="img-fluid rounded-circle start" alt="..." />
+                    </div>
+                    <div className="col-md-8">
+                        <div className="card-body" style={{ width: '100%' }}>
+                            <h5 className="card-title">{props.name}</h5>
+                            <p className="card-text">{props.role}</p>
+                            <p className="card-text"><small className="text-body-secondary">{props.institute}</small></p>
+                            <Link className="fs-6 p-2 border border-secondary border-2 rounded-pill icon-link text-decoration-none text-secondary" to={{ pathname: `/befriend/${props.id}` }}>Befriend</Link>
+                        </div>
+                    </div>
                 </div>
-                <Link className="float-end fs-6 py-4 px-2 border border-secondary border-2 rounded-3 rounded-end-circle icon-link text-decoration-none text-secondary" to={{ pathname: `/befriend/${props.id}` }}>Befriend</Link>    
             </div>
+
+
+
         </>
     )
 }

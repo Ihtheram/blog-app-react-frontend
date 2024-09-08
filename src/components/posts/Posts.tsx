@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { IPost } from '../../models/IPost'
 import Post from './Post';
+import { NotFound } from '../errors/NotFound';
 
 function Posts() {
 
@@ -62,11 +63,11 @@ function Posts() {
   
 
   return (
-    <div className='container col-sm-8 min-vh-100'>
+    <div>
       {/* <button onClick={navigateToNewPostForm} className='new-post-button'>Create a New Post!</button> */}
-      <div className='container-fluid'>
+      <div>
       {/* <h1 className='text-center text-secondary-emphasis fw-normal'>POSTS</h1> */}
-        {posts == null? <h4 className='text-center fw-normal text-body-secondary m-4'>No posts yet</h4>
+        {posts == null? <NotFound />
         : posts.map((post) => {
           return <Post {...post} key={"post-icon-"+post.id}/>
         })}

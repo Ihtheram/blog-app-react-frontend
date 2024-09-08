@@ -62,7 +62,7 @@ function Comments(props:{postId:number}) {
       </div>
       <div {...getCollapseProps()}>
 
-        <div className="content container p-1 m-1  border-2 rounded-5">
+        <div className="content  p-1 m-1  border-2 rounded-5">
           <div className='card container-fluid p-2 border-0'>
           {comments && <h4 className='px-3'> Comments </h4>}
             {/* <button onClick={navigateToNewCommentForm} className='new-comment-button'>Create a New Comment!</button> */}

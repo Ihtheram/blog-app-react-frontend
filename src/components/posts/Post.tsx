@@ -29,8 +29,8 @@ function Post(props: IPost) {
 
 
   return (
-    <div className='card-body container-fluid p-0 my-3 bg-dark rounded-5'>
-      <div className='container-fluid p-4 bg-light-subtle rounded-5'>
+    <div className='card-body container-fluid p-0 mb-3 bg-dark rounded-5'>
+      <div className='container-fluid p-4 bg-post rounded-5'>
         <h4 className='card-title py-1 fw-bold'> {user ? user.name : "John Doe"}</h4>
         <h5 className='py-1'> Topic: {props.category ? props.category : "Other"} </h5>
         <p className="card-text fs-5 py-1"> {props.description}</p>

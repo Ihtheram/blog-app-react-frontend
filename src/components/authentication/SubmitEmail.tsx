@@ -2,9 +2,9 @@ import React from 'react'
 
 export const SubmitEmail = () => {
   return (
-    <div className='mx-auto text-center justify-content-center min-vh-100'>
+    <div className='position-absolute top-50 start-50 translate-middle'>
 
-      <form className='mx-auto container-fluid p-4 bg-light-subtle rounded-5 m-5 mw-25 col-sm-4' aria-label='Login Form'>
+      <form className='mx-auto container-fluid p-4 bg-light-subtle rounded-5 m-5 mw-25 col-sm-4'  style={{width: '22rem'}}  aria-label='Login Form'>
         <legend className='text-secondary my-3 pb-3'>Reset password</legend>
 
         <div className="form-floating mb-3">

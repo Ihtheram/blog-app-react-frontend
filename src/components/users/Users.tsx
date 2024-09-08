@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { IUser } from '../../models/IUser'
 import User from './User';
+import { NotFound } from '../errors/NotFound';
 
 function Users() {
 
@@ -43,6 +44,156 @@ function Users() {
       createdAt: new Date("2023-03-22T11:15:00Z"),
       updatedAt: new Date("2023-08-01T16:30:00Z"),
     },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    },
+    {
+      id: 3,
+      name: "Carol White",
+      email: "carol.white@email.com",
+      institute: "Future Academy",
+      address: "789 Oak St, Gotham, NJ",
+      role: Role.writer,
+      createdAt: new Date("2023-03-22T11:15:00Z"),
+      updatedAt: new Date("2023-08-01T16:30:00Z"),
+    }
   ];
 
 
@@ -70,11 +221,11 @@ function Users() {
 
 
   return (
-    <div className='container col-sm-8 min-vh-100'>
+    <div className='justify-content-center mx-auto'>
       {/* <button onClick={navigateToRegistrationForm} className='new-user-button'>Sign up</button> */}
-      <div className='container-fluid'>
+      <div className='container-fluid justify-content-center  d-inline-flex flex-wrap'>
       {/* <h1 className='text-center text-secondary-emphasis fw-normal'>PEOPLE</h1> */}
-        {users == null ?  <h4 className='text-center fw-normal text-body-secondary m-4'>Unfortunately, cannot show users!</h4>
+        {users == null ? <NotFound />
           : users.map((user) => {
             return <User {...user} key={"user-icon-" + user.id} />
           })}
