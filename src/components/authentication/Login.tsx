@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { SyntheticEvent, useState } from 'react'
+import { IUser } from '../../models/IUser';
 
 export const Login = () => {
 
@@ -8,15 +9,31 @@ export const Login = () => {
   const [storedEmail, setStoredEmail] = useState<string>("");
   const [storedPassword, setStoredPassword] = useState<string>("");
 
+  enum Role {
+    writer = "Writer",
+    admin = "Admin",
+  }
+  const example: IUser =
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john-doe@email.com",
+    institute: "Tech University",
+    address: "123 Main St, Springfield, IL",
+    role: Role.writer,
+    createdAt: new Date("2023-01-15T08:00:00Z"),
+    updatedAt: new Date("2023-06-20T10:00:00Z"),
+  }
+
   let changeEmail = (e: SyntheticEvent) => {
     setStoredEmail((e.target as HTMLInputElement).value)
-}
+  }
 
-let changePassword = (e: SyntheticEvent) => {
-  setStoredPassword((e.target as HTMLInputElement).value)
-}
+  let changePassword = (e: SyntheticEvent) => {
+    setStoredPassword((e.target as HTMLInputElement).value)
+  }
 
-  const login = async() => {
+  const login = async () => {
 
     return axios
       .post(API_URL + 'login', {
@@ -24,12 +41,15 @@ let changePassword = (e: SyntheticEvent) => {
         storedPassword,
       })
       .then((response) => {
-        if (response.data.accessToken) {
+        if (response.data.length >0 && response.data.accessToken) {
           localStorage.setItem('user', JSON.stringify(response.data));
+          return response.data;
+        } else {
+          // uncomment if needed for testing purposes
+          localStorage.setItem('user', JSON.stringify(example));
+          return example;
         }
-        // uncomment if needed for testing purposes
-        // localStorage.setItem('user', JSON.stringify(response.data));
-        return response.data;
+
       });
   };
 
@@ -37,7 +57,7 @@ let changePassword = (e: SyntheticEvent) => {
   return (
     <div className='position-absolute top-50 start-50 translate-middle'>
 
-      <form className='container p-4 bg-light-subtle rounded-5 mx-5 col-sm-4' style={{width: '22rem'}} aria-label='Login Form'>
+      <form className='container p-4 bg-light-subtle rounded-5 mx-5 col-sm-4' style={{ width: '22rem' }} aria-label='Login Form'>
         <legend className='text-secondary my-3 pb-3'>Login to your account</legend>
 
         <div className="form-floating mb-3">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
@@ -13,14 +13,28 @@ import { SubmitEmail } from './components/authentication/SubmitEmail';
 import { SubmitCode } from './components/authentication/SubmitCode';
 import { SubmitPassword } from './components/authentication/SubmitPassword';
 import { Logout } from './components/authentication/Logout';
+import { Profile } from './components/users/Profile';
+import { IUser } from './models/IUser';
 
 function App() {
+  const storedUser : string | null = localStorage.getItem('user');
+  const [ loggedInUser, setloggedInUser] = useState<IUser | null>(null);
+
+  useEffect(() => {
+    
+    setloggedInUser(storedUser ? JSON.parse(storedUser) : null);
+  }, [storedUser]);
+
+
+    
+ 
   return (
     <div className="App bg-black bg-gradient">
       <BrowserRouter>
 
-        <header className="App-header container-fluid navbar navbar-expand-sm p-2 sticky-top d-flex justify-content-center backdrop-filter-blur">
+        <header className="App-header container-fluid navbar navbar-expand-sm p-2 sticky-top d-flex justify-content-between backdrop-filter-blur">
           <Link className="App-logo" to="/"></Link>
+          <Link className='profile-image' to="profile"></Link>
         </header>
 
         <section className="App-section min-vh-100 d-inline-flex justify-content-between rounded-5">
@@ -46,7 +60,8 @@ function App() {
               {/* <Route path='/edit/:id' element={<EditPostForm />}></Route> */}
 
               <Route path='/people' element={<Users />} />
-
+              
+              <Route path='/profile' element={loggedInUser ? <Profile {...loggedInUser} /> : <Navigate to="/login" />} />
               {/* <Route path='/new-comment' element={<NewCommentForm />}></Route> */}
 
               <Route path='*' element={<NotFound />} />

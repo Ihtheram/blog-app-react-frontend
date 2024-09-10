@@ -21,9 +21,6 @@ function User(props: IUser) {
                     </div>
                 </div>
             </div>
-
-
-
         </>
     )
 }

@@ -47,6 +47,17 @@ article {
   box-shadow: none;
 }
 
+.profile-image {
+  background-image: url(./assets/images/avatar-159236_640.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 35px;
+  width: 35px;
+  color: transparent;
+  box-shadow: none;
+  border-radius: 100%;
+}
+
 
 .App-footer {
   min-height: 10vh;

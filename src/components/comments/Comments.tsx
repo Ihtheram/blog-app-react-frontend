@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { IComment } from '../../models/IComment';
 import Comment from './Comment';
 import { useCollapse } from 'react-collapsed';
+import { NoContent } from '../errors/NoContent';
 
 function Comments(props:{postId:number}) {
   // const location = useLocation();
@@ -67,7 +68,7 @@ function Comments(props:{postId:number}) {
           {comments && <h4 className='px-3'> Comments </h4>}
             {/* <button onClick={navigateToNewCommentForm} className='new-comment-button'>Create a New Comment!</button> */}
             <div className='container-fluid'>
-              {comments == null ? <h4 className='text-center fw-normal text-body-secondary fs-6'>This post has no comments yet</h4>
+              {comments == null ? <NoContent pageName={'post'} contentsName={'comment'} />
                 : comments.map((comment) => {
                   return <Comment {...comment} key={"comment-icon-" + comment.id} />
                 })}

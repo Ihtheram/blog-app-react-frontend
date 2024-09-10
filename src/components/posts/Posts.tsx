@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { IPost } from '../../models/IPost'
 import Post from './Post';
 import { NotFound } from '../errors/NotFound';
+import { NoContent } from '../errors/NoContent';
 
 function Posts() {
 
@@ -36,7 +37,24 @@ function Posts() {
       createdAt: new Date("2024-08-18T09:31:43Z"),
       updatedAt: new Date("2024-09-18T09:31:43Z"),
     },
-    // Add more posts as needed...
+    {
+      id: 3,
+      userId: 102,
+      category: Category.Science,
+      description: "Science, the systematic pursuit of knowledge, has been humanity's guiding star through the dark cosmic sea of the unknown. From the vibrant hues of the solar spectrum to the minuscule interactions of subatomic particles, the manifold realms of science bind our understanding of existence. This corpus delves into the fundamental branches of science, the methodology of scientific inquiry, and the transcendent influence of scientific discoveries on society.",
+      approval: true,
+      createdAt: new Date("2024-08-18T09:31:43Z"),
+      updatedAt: new Date("2024-09-18T09:31:43Z"),
+    },
+    {
+      id: 4,
+      userId: 102,
+      category: Category.Science,
+      description: "Science, the systematic pursuit of knowledge, has been humanity's guiding star through the dark cosmic sea of the unknown. From the vibrant hues of the solar spectrum to the minuscule interactions of subatomic particles, the manifold realms of science bind our understanding of existence. This corpus delves into the fundamental branches of science, the methodology of scientific inquiry, and the transcendent influence of scientific discoveries on society.",
+      approval: true,
+      createdAt: new Date("2024-08-18T09:31:43Z"),
+      updatedAt: new Date("2024-09-18T09:31:43Z"),
+    },
   ];
   
 
@@ -67,7 +85,7 @@ function Posts() {
       {/* <button onClick={navigateToNewPostForm} className='new-post-button'>Create a New Post!</button> */}
       <div>
       {/* <h1 className='text-center text-secondary-emphasis fw-normal'>POSTS</h1> */}
-        {posts == null? <NotFound />
+        {posts == null? <NoContent pageName={'page'} contentsName={'post'}  />
         : posts.map((post) => {
           return <Post {...post} key={"post-icon-"+post.id}/>
         })}

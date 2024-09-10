@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { IUser } from '../../models/IUser'
 import User from './User';
 import { NotFound } from '../errors/NotFound';
+import { NoContent } from '../errors/NoContent';
 
 function Users() {
 
@@ -63,139 +64,8 @@ function Users() {
       role: Role.writer,
       createdAt: new Date("2023-03-22T11:15:00Z"),
       updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
-    },
-    {
-      id: 3,
-      name: "Carol White",
-      email: "carol.white@email.com",
-      institute: "Future Academy",
-      address: "789 Oak St, Gotham, NJ",
-      role: Role.writer,
-      createdAt: new Date("2023-03-22T11:15:00Z"),
-      updatedAt: new Date("2023-08-01T16:30:00Z"),
     }
   ];
-
 
 
   const navigate = useNavigate();
@@ -225,7 +95,7 @@ function Users() {
       {/* <button onClick={navigateToRegistrationForm} className='new-user-button'>Sign up</button> */}
       <div className='container-fluid justify-content-center  d-inline-flex flex-wrap'>
       {/* <h1 className='text-center text-secondary-emphasis fw-normal'>PEOPLE</h1> */}
-        {users == null ? <NotFound />
+        {users == null ? <NoContent pageName={'page'} contentsName={'user'}  />
           : users.map((user) => {
             return <User {...user} key={"user-icon-" + user.id} />
           })}
