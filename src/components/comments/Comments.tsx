@@ -6,7 +6,7 @@ import Comment from './Comment';
 import { useCollapse } from 'react-collapsed';
 import { NoContent } from '../errors/NoContent';
 
-function Comments(props:{postId:number}) {
+function Comments(props: { postId: number }) {
   // const location = useLocation();
   // const postId = location.state?.postId;
   const postId = props.postId;
@@ -50,33 +50,45 @@ function Comments(props:{postId:number}) {
 
     fetchData();
 
-  }, []);
+  }, [postId]);
 
 
 
-  // className="fs-5 border border-secondary border-2 rounded-pill text-secondary icon-link text-decoration-none  my-3" 
   return (
-
     <div className="collapsible">
+
       <div className="header text-secondary fs-5 border border-secondary border-1 rounded-pill icon-link p-3 m-3 fs-6" {...getToggleProps()}>
         {isExpanded ? 'Collapse' : 'Expand'} Comments
       </div>
+      
       <div {...getCollapseProps()}>
 
         <div className="content  p-1 m-1  border-2 rounded-5">
+
           <div className='card container-fluid p-2 border-0'>
-          {comments && <h4 className='px-3'> Comments </h4>}
-            {/* <button onClick={navigateToNewCommentForm} className='new-comment-button'>Create a New Comment!</button> */}
+
+            <form className='container-fluid bg-comment rounded-5 px-0 mb-4' aria-label='Form'>
+              <div className='d-flex justify-content-between'>
+                <textarea className="bg-dark w-100 rounded-5 px-3 py-1" placeholder="Write your opinion..." /*value={opinion} onChange={changeOpinion}*/ />
+                <button className="btn icon-link fs-5 border border-secondary border-2 rounded-pill px-3 py-2 m-2 button-submit h-25" /*onClick={post}*/>Post</button>
+              </div>
+            </form>
+
+            {comments && <h4 className='px-3'> Comments </h4>}
+
             <div className='container-fluid'>
               {comments == null ? <NoContent pageName={'post'} contentsName={'comment'} />
                 : comments.map((comment) => {
                   return <Comment {...comment} key={"comment-icon-" + comment.id} />
                 })}
             </div>
+
           </div>
+
         </div>
 
       </div>
+
     </div>
 
 

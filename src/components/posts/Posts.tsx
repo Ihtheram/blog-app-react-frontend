@@ -82,7 +82,18 @@ function Posts() {
 
   return (
     <div>
-      {/* <button onClick={navigateToNewPostForm} className='new-post-button'>Create a New Post!</button> */}
+
+      <div className='card-body container-fluid bg-post rounded-5 mb-3'>
+
+        <form className='container-fluid rounded-5 px-0' aria-label='Form'>
+          <div className='d-flex justify-content-between text-end'>
+            <textarea className="text-center bg-dark w-100 rounded-5 px-3 py-1" placeholder="Compose_" /*value={prose} onChange={changeProse}*/ />
+            <button className="btn icon-link fs-5 border border-secondary border-2 rounded-pill px-3 py-2 m-2 button-submit h-25" /*onClick={post}*/>Post</button>        
+          </div>
+        </form>
+
+      </div>
+
       <div>
       {/* <h1 className='text-center text-secondary-emphasis fw-normal'>POSTS</h1> */}
         {posts == null? <NoContent pageName={'page'} contentsName={'post'}  />

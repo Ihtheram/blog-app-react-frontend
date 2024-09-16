@@ -28,12 +28,12 @@ function Comment(props: IComment) {
 
     return (
         <>
-            <div className='card-body container-fluid p-3 bg-comment rounded-5 my-3'>
+            <div className='card-body container-fluid p-3 bg-comment rounded-5 my-3 text-start'>
                 <h6 className='card-title fs-5 fw-bold'> {user? user.name: "John Doe"}</h6>
                 <p className="card-text fs-6 py-1">{props.description}</p>
                 <p className="card-text fs-6">
-                <small className="text-body-secondary">Posted on: {props.createdAt.toString()} {props.updatedAt.toString() === props.createdAt.toString() ? '' : ' [Edited]'}
-                  </small>
+                {/* <small className="text-body-secondary">Posted on: {props.createdAt.toString()} {props.updatedAt.toString() === props.createdAt.toString() ? '' : ' [Edited]'}
+                  </small> */}
                 </p>
                 
             </div>

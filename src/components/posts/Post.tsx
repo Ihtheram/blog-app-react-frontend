@@ -34,14 +34,14 @@ function Post(props: IPost) {
         <h4 className='card-title py-1 fw-bold'> {user ? user.name : "John Doe"}</h4>
         <h5 className='py-1'> Topic: {props.category ? props.category : "Other"} </h5>
         <p className="card-text fs-5 py-1"> {props.description}</p>
-        <p className="card-text fs-6">
+        {/* <p className="card-text fs-6">
           <small className="text-body-secondary">Posted on: {props.createdAt.toString()}
             <br />
             {props.updatedAt.toString() === props.createdAt.toString() ? ''
               : 'Last Edited: ' + props.updatedAt.toString()
             }
           </small>
-        </p>
+        </p> */}
         {/* <Link className="fs-5 my-3 border border-secondary border-2 rounded-pill  icon-link text-decoration-none text-secondary" to={{ pathname: `/post/${props.id}` }}>Comments</Link> */}
 
       </div><Comments postId={props.id} />
