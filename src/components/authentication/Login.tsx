@@ -4,7 +4,7 @@ import { IUser } from '../../models/IUser';
 
 export const Login = () => {
 
-  const API_URL = 'http://localhost:8080/api/auth/';
+  const login_endpoint = 'http://localhost:8080/api/auth/login';
 
   const [storedEmail, setStoredEmail] = useState<string>("");
   const [storedPassword, setStoredPassword] = useState<string>("");
@@ -35,22 +35,21 @@ export const Login = () => {
 
   const login = async () => {
 
-    return axios
-      .post(API_URL + 'login', {
+    return axios.post(
+      login_endpoint, {
         storedEmail,
         storedPassword,
-      })
-      .then((response) => {
-        if (response.data.length >0 && response.data.accessToken) {
-          localStorage.setItem('user', JSON.stringify(response.data));
-          return response.data;
-        } else {
-          // uncomment if needed for testing purposes
-          localStorage.setItem('user', JSON.stringify(example));
-          return example;
-        }
-
-      });
+      }
+    ).then((response) => {
+      if (response.data.length > 0 && response.data.accessToken) {
+        localStorage.setItem('user', JSON.stringify(response.data));
+        return response.data;
+      } else {
+        // uncomment if needed for testing purposes
+        localStorage.setItem('user', JSON.stringify(example));
+        return example;
+      }
+    });
   };
 
 
@@ -75,7 +74,7 @@ export const Login = () => {
           <div>
             <p className='fs-6'>
               <a className='py-3' href="/submit-email">Forgot password?</a>
-              <br />Dont have account?
+              <br />Need an account?
               <a className="icon-link pt-3 ps-1" href="/register">Register</a>
             </p>
           </div>

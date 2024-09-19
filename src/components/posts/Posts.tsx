@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { SyntheticEvent, useEffect, useState } from 'react'
 import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
 import { IPost } from '../../models/IPost'
 import Post from './Post';
-import { NotFound } from '../errors/NotFound';
 import { NoContent } from '../errors/NoContent';
 
 function Posts() {
+
+  const posts_endpoint = 'http://localhost:8080/posts/';
 
   enum Category {
     Psychology = "Psychology",
@@ -18,7 +19,7 @@ function Posts() {
     Others = "Others"
   }
 
-  const examples : IPost[] = [
+  const example_posts : IPost[] = [
     {
       id: 1,
       userId: 101,
@@ -57,14 +58,11 @@ function Posts() {
     },
   ];
   
-
-  const navigate = useNavigate();
-
-  const [posts, setPosts] = useState<IPost[]|null>(examples)
-
+  const [posts, setPosts] = useState<IPost[]>(example_posts)
+  const [prose, setProse] = useState<string>("");
 
   useEffect(() => {
-    axios.get('http://localhost:8080/posts')
+    axios.get(posts_endpoint)
       .then((response) => {
         setPosts(response.data);
       })
@@ -74,24 +72,51 @@ function Posts() {
       });
   }, []);
 
-
-  let navigateToNewPostForm = () => {
-    navigate('/new-post');
+  let changeProse = (e: SyntheticEvent) => {
+    setProse((e.target as HTMLInputElement).value)
   }
-  
+
+  const post = async () => {
+    return axios
+      .post(posts_endpoint, {
+        prose
+      })
+      .then(() => {
+        setPosts((posts) => [
+          ...posts,
+          {
+            id: 5,
+            userId: 104,
+            category: Category.Science,
+            description: prose,
+            approval: true,
+            createdAt: new Date(),
+            updatedAt: new Date()
+          }
+        ]);
+      });
+  };
+
+  const navigate = useNavigate();
+
+  const authCheck = async () => {
+    if (!localStorage.getItem('user')) {
+      console.log("Not logged in!");
+      navigate('/login');
+    } 
+    
+  }
 
   return (
     <div>
 
       <div className='card-body container-fluid bg-post rounded-5 mb-3'>
-
         <form className='container-fluid rounded-5 px-0' aria-label='Form'>
           <div className='d-flex justify-content-between text-end'>
-            <textarea className="text-center bg-dark w-100 rounded-5 px-3 py-1" placeholder="Compose_" /*value={prose} onChange={changeProse}*/ />
-            <button className="btn icon-link fs-5 border border-secondary border-2 rounded-pill px-3 py-2 m-2 button-submit h-25" /*onClick={post}*/>Post</button>        
+            <textarea className="text-center bg-dark w-100 rounded-5 px-3 py-1" placeholder="Compose . . ." value={prose} onChange={changeProse} onClick={authCheck} />
+            <button className="icon-link fs-5 rounded-end-5 button-basic px-3" onClick={post}>Post</button>        
           </div>
         </form>
-
       </div>
 
       <div>
@@ -101,6 +126,7 @@ function Posts() {
           return <Post {...post} key={"post-icon-"+post.id}/>
         })}
       </div>
+
     </div>
   )
 }

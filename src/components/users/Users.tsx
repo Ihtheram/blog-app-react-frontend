@@ -9,12 +9,14 @@ import { NoContent } from '../errors/NoContent';
 
 function Users() {
 
+  const users_endpoint = 'http://localhost:8080/users';
+
   enum Role {
     writer = "Writer",
     admin = "Admin",
   }
 
-  const example: IUser[] = [
+  const example_users: IUser[] = [
     {
       id: 1,
       name: "Alice Johnson",
@@ -70,11 +72,11 @@ function Users() {
 
   const navigate = useNavigate();
 
-  const [users, setUsers] = useState<IUser[] | null>(example)
+  const [users, setUsers] = useState<IUser[] | null>(example_users)
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/users')
+    axios.get(users_endpoint)
       .then((response) => {
         setUsers(response.data);
       })
@@ -83,12 +85,6 @@ function Users() {
         // navigate('/login');
       });
   }, []);
-
-
-  let navigateToRegistrationForm = () => {
-    navigate('/register');
-  }
-
 
   return (
     <div className='justify-content-center mx-auto'>

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
 
-import { IPost } from '../../models/IPost'
+import { IPost } from '../../models/IPost';
 import { IUser } from '../../models/IUser';
 import axios from 'axios';
 import Comments from '../comments/Comments';
@@ -9,24 +8,21 @@ import Comments from '../comments/Comments';
 
 function Post(props: IPost) {
 
+  const users_endpoint = 'http://localhost:8080/users/';
+
   const [user, setUser] = useState<IUser | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/users/' + props?.id, {});
+        const response = await axios.get(users_endpoint + props?.id, {});
         setUser(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-
     fetchData();
-
-  }, []);
-
-
-
+  }, [props?.id, user]);
 
   return (
     <div className='card-body container-fluid p-0 mb-3 bg-dark rounded-5'>
@@ -44,7 +40,8 @@ function Post(props: IPost) {
         </p> */}
         {/* <Link className="fs-5 my-3 border border-secondary border-2 rounded-pill  icon-link text-decoration-none text-secondary" to={{ pathname: `/post/${props.id}` }}>Comments</Link> */}
 
-      </div><Comments postId={props.id} />
+      </div>
+      <Comments postId={props.id} />
     </div>
   )
 }

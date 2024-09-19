@@ -17,17 +17,17 @@ import { Profile } from './components/users/Profile';
 import { IUser } from './models/IUser';
 
 function App() {
-  const storedUser : string | null = localStorage.getItem('user');
-  const [ loggedInUser, setloggedInUser] = useState<IUser | null>(null);
+  const storedUser: string | null = localStorage.getItem('user');
+  const [loggedInUser, setloggedInUser] = useState<IUser | null>(null);
 
   useEffect(() => {
-    
+
     setloggedInUser(storedUser ? JSON.parse(storedUser) : null);
   }, [storedUser]);
 
 
-    
- 
+
+
   return (
     <div className="App bg-black bg-gradient">
       <BrowserRouter>
@@ -39,8 +39,8 @@ function App() {
 
         <section className="App-section min-vh-100 d-inline-flex justify-content-between rounded-5">
 
-          
-          <nav className='w-25 p-3'><div className=' bg-body-tertiary rounded-5 w-'>
+
+          <nav className='w-25 p-3'><div className='bg-body-tertiary rounded-5'>
             <Nav></Nav>
           </div></nav>
 
@@ -60,7 +60,7 @@ function App() {
               {/* <Route path='/edit/:id' element={<EditPostForm />}></Route> */}
 
               <Route path='/people' element={<Users />} />
-              
+
               <Route path='/profile' element={loggedInUser ? <Profile {...loggedInUser} /> : <Navigate to="/login" />} />
               {/* <Route path='/new-comment' element={<NewCommentForm />}></Route> */}
 
@@ -71,10 +71,23 @@ function App() {
           <aside className='p-3 text-end w-25'>
 
 
-             
+
           </aside>
 
         </section>
+
+        <div id='bottom-navbar' className="container-fluid navbar navbar-expand-sm p-2 justify-content-center backdrop-filter-blur sticky-bottom">
+          <Link className="button-basic dec-none mx-4 py-1" to="/posts">Posts</Link>
+          <Link className="button-basic dec-none mx-4 py-1" to="/people">People</Link>
+
+          {localStorage.getItem('user') == null ?
+            <>
+              <Link className="button-basic dec-none mx-4 py-1" to="/login">Login</Link>
+              <Link className="button-basic dec-none mx-4 py-1" to="/register">Register</Link>
+            </>
+            : <Link className="button-basic dec-none mx-4 py-1" to="/logout">Logout</Link>
+          }
+        </div>
 
         <footer className='App-footer'>
           Blog App Inc

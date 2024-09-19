@@ -3,7 +3,7 @@ import React, { SyntheticEvent, useState } from 'react'
 
 export const Register = () => {
 
-  const API_URL = 'http://localhost:8080/api/auth/';
+  const register_endpoint = 'http://localhost:8080/api/auth/register';
 
   const [storedName, setStoredName] = useState<string>("");
   const [storedEmail, setStoredEmail] = useState<string>("");
@@ -37,19 +37,18 @@ export const Register = () => {
   }
 
   const register = async () => {
-
     if (changePassword === changeRetypedPassword) {
-      return axios
-        .post(API_URL + 'register', {
+      return axios.post(
+        
+        register_endpoint, {
           storedName,
           storedEmail,
           storedInstitute,
           storedAddress,
           storedPassword,
           storedRetypedPassword
-        })
-    }
-  };
+        }
+  )}};
 
 
   return (

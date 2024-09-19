@@ -1,16 +1,16 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { SyntheticEvent, useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { IComment } from '../../models/IComment';
 import Comment from './Comment';
 import { useCollapse } from 'react-collapsed';
-import { NoContent } from '../errors/NoContent';
 
 function Comments(props: { postId: number }) {
-  // const location = useLocation();
-  // const postId = location.state?.postId;
-  const postId = props.postId;
 
+  const comments_endpoint = 'http://localhost:8080/comments/';
+
+  const postId = props.postId;
+  const [opinion, setOpinion] = useState<string>("");
 
   const example: IComment[] = [
     {
@@ -35,13 +35,14 @@ function Comments(props: { postId: number }) {
   ];
 
 
-  const [comments, setComments] = useState<IComment[] | null>(example)
+  const [comments, setComments] = useState<IComment[]>(example)
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+  const [isPointedUp, setIsPointedUp] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/comments/' + postId, {});
+        const response = await axios.get(comments_endpoint + postId, {});
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -52,32 +53,81 @@ function Comments(props: { postId: number }) {
 
   }, [postId]);
 
+  const togglePointUp = () => {
+    isPointedUp? setIsPointedUp(false) : setIsPointedUp(true);
+  }
 
+  const getSharingLink = () => {
+    console.log("sharing Link");
+  }
+
+  let changeOpinion = (e: SyntheticEvent) => {
+    setOpinion((e.target as HTMLInputElement).value)
+  }
+
+  const post = async () => {
+    return axios
+      .post(comments_endpoint, {
+        opinion
+      })
+      .then(() => {
+        setComments((comments) => [
+          ...comments,
+          {
+            id: 5,
+            postId: 10,
+            commenterId: 4,
+            description: opinion,
+            parentCommentId: 1,
+            createdAt: new Date(),
+            updatedAt: new Date()
+          }
+        ]);
+      });
+  };
+
+  const navigate = useNavigate();
+  
+  const authCheck = async () => {
+    if (!localStorage.getItem('user')) {
+      console.log("Not logged in!");
+      navigate('/login');
+    } 
+  }
 
   return (
     <div className="collapsible">
 
-      <div className="header text-secondary fs-5 border border-secondary border-1 rounded-pill icon-link p-3 m-3 fs-6" {...getToggleProps()}>
-        {isExpanded ? 'Collapse' : 'Expand'} Comments
+      <div className= {'container-fluid d-flex justify-content-between fs-5' + isExpanded? 'sticky-top ' : ''}>
+        <button className="button-basic px-3 p-2 m-3 justify-content-center border-0 bg-transparent" {...getToggleProps()}>
+          {isExpanded ? <i className="bi bi-chat-left-text-fill"></i> : <i className="bi bi-chat-left-text "></i>}
+        </button>
+        <button className="button-basic px-3 p-2 m-3 justify-content-center border-0 bg-transparent" onClick={togglePointUp}>
+          {isPointedUp ? <i className="bi bi-hand-index-thumb-fill"></i> : <i className="bi bi-hand-index-thumb"></i>}
+        </button>
+        <button className="button-basic px-3 p-2 m-3 justify-content-center border-0 bg-transparent" onClick={getSharingLink}>
+          <i className="bi bi-share"></i>
+        </button>
       </div>
-      
+
       <div {...getCollapseProps()}>
 
         <div className="content  p-1 m-1  border-2 rounded-5">
 
-          <div className='card container-fluid p-2 border-0'>
+          <div className='card container-fluid p-2 border-0 text-start'>
 
-            <form className='container-fluid bg-comment rounded-5 px-0 mb-4' aria-label='Form'>
-              <div className='d-flex justify-content-between'>
-                <textarea className="bg-dark w-100 rounded-5 px-3 py-1" placeholder="Write your opinion..." /*value={opinion} onChange={changeOpinion}*/ />
-                <button className="btn icon-link fs-5 border border-secondary border-2 rounded-pill px-3 py-2 m-2 button-submit h-25" /*onClick={post}*/>Post</button>
-              </div>
-            </form>
-
-            {comments && <h4 className='px-3'> Comments </h4>}
+            {comments && <h4 className='px-3 mb-4'> Comments </h4>}
 
             <div className='container-fluid'>
-              {comments == null ? <NoContent pageName={'post'} contentsName={'comment'} />
+              {/* Post a comment */}
+              <form className='container-fluid bg-comment rounded-5 px-0 mb-4' aria-label='Form'>
+                <div className='d-flex justify-content-between'>
+                  <textarea className="bg-dark w-100 rounded-5 px-3 py-1" placeholder="Write your opinion..." value={opinion} onChange={changeOpinion} onClick={authCheck} />
+                  <button className="button-basic fs-5 rounded-end-5 px-3" onClick={post}><i className="bi bi-send text-light"></i></button>
+                </div>
+              </form>
+              {/* List of comments */}
+              {comments == null ? <p className='text-center text-secondary'> This page has no comments yet</p>
                 : comments.map((comment) => {
                   return <Comment {...comment} key={"comment-icon-" + comment.id} />
                 })}
