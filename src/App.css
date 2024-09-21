@@ -82,11 +82,14 @@ label {
   font-family: 'Times New Roman', Times, serif;
 }
 
-.button-basic, .button-submit {
-  transition-duration: 1s;
+.button-basic, .button-submit, .button-risky {
   color: rgba(255, 255, 255, 0.497);
   background-color: transparent;
   border: none;
+}
+
+.button-basic {
+  transition-duration: 1s;
 }
 
 .button-basic:hover {
@@ -118,6 +121,23 @@ nav, aside {
   display: flex;
 }
 
+#person-card {
+  width: 429px;
+  height: 165px;
+  margin-bottom: 15px;
+  justify-content: center;
+
+}
+
+#person-card-image {
+  width: 150px;
+}
+
+#person-card-body {
+  align-items: center;
+  justify-content: center;
+  max-width: 60%;
+}
 
 @media only screen and (min-width: 1000px) {
   nav, aside {
@@ -125,5 +145,9 @@ nav, aside {
   }
   #bottom-navbar {
     display: none;
+  }
+  #person-card {
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }

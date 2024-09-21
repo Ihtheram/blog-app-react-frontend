@@ -56,7 +56,7 @@ export const Login = () => {
   return (
     <div className='position-absolute top-50 start-50 translate-middle'>
 
-      <form className='container p-4 bg-light-subtle rounded-5 mx-5 col-sm-4' style={{ width: '22rem' }} aria-label='Login Form'>
+      <form className='container p-4 bg-light-subtle rounded-5 mx-5 col-sm-4 w-sm-100' style={{ width: '29rem' }} aria-label='Login Form'>
         <legend className='text-secondary my-3 pb-3'>Login to your account</legend>
 
         <div className="form-floating mb-3">

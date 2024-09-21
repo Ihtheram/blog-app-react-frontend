@@ -54,7 +54,7 @@ export const Register = () => {
   return (
     <div className='position-absolute top-50 start-50 translate-middle'>
 
-      <form className='mx-auto container-fluid p-4 bg-light-subtle rounded-5 m-5 opacity-75' aria-label='Login Form'>
+      <form className='container p-4 my-4 bg-light-subtle rounded-5 col-sm-4 w-sm-100' style={{ width: '29rem' }} aria-label='Signup Form'>
         <legend className='text-secondary my-3 pb-3'>Register for an account</legend>
 
         <div className="form-floating mb-3">
@@ -77,7 +77,7 @@ export const Register = () => {
           <label htmlFor="address" className='fs-6'>Address</label>
         </div>
 
-        <div className="form-floating">
+        <div className="form-floating mb-3">
           <input id='password' type="password" className='form-control rounded-pill' placeholder="Password" value={storedPassword} onChange={changePassword} />
           <label htmlFor="password" className='fs-6'>Password</label>
         </div>
